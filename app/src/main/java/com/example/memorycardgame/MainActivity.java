@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -200,6 +201,48 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(cardsArray[card] == 206){
             iv.setImageResource(image206);
+        }
+
+//        Check which image is selected and save it to temporary variable
+        if(cardNumber == 1){
+            firstCard = cardsArray[card];
+            if(firstCard > 200){
+                firstCard = firstCard-100;
+            }
+            cardNumber = 2;
+            clickedFirst = card;
+
+            iv.setEnabled(false);
+        }
+        else if(cardNumber == 2){
+            secondCard = cardsArray[card];
+            if(secondCard > 200){
+                secondCard = secondCard-100;
+            }
+            cardNumber = 1;
+            clickedSecond = card;
+
+            iv_11.setEnabled(false);
+            iv_12.setEnabled(false);
+            iv_13.setEnabled(false);
+            iv_14.setEnabled(false);
+            iv_21.setEnabled(false);
+            iv_22.setEnabled(false);
+            iv_23.setEnabled(false);
+            iv_24.setEnabled(false);
+            iv_31.setEnabled(false);
+            iv_32.setEnabled(false);
+            iv_33.setEnabled(false);
+            iv_34.setEnabled(false);
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run(){
+                    //Check if the selected images are equal
+                    
+                }
+            }, 1000);
         }
     }
 
