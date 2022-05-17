@@ -1,11 +1,12 @@
 package com.example.memorycardgame;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -397,7 +398,9 @@ public class MainActivity extends AppCompatActivity {
 
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
             alertDialogBuilder
-                    .setMessage("GAME OVER!\nP1: " + playerPoints + "\nP2: " + cpuPoints)
+                    .setIcon(R.drawable.ic_game_over)
+                    .setTitle("GAME OVER")
+                    .setMessage("P1: " + playerPoints + "\nP2: " + cpuPoints)
                     .setCancelable(false)
                     .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
                         @Override
