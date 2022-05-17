@@ -1,7 +1,10 @@
 package com.example.memorycardgame;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -372,6 +375,47 @@ public class MainActivity extends AppCompatActivity {
         iv_32.setEnabled(true);
         iv_33.setEnabled(true);
         iv_34.setEnabled(true);
+
+//        Game Over check
+        checkEnd();
+    }
+
+    private void checkEnd(){
+        if(iv_11.getVisibility() == View.INVISIBLE &&
+                iv_11.getVisibility() == View.INVISIBLE &&
+                iv_12.getVisibility() == View.INVISIBLE &&
+                iv_13.getVisibility() == View.INVISIBLE &&
+                iv_14.getVisibility() == View.INVISIBLE &&
+                iv_21.getVisibility() == View.INVISIBLE &&
+                iv_22.getVisibility() == View.INVISIBLE &&
+                iv_23.getVisibility() == View.INVISIBLE &&
+                iv_24.getVisibility() == View.INVISIBLE &&
+                iv_31.getVisibility() == View.INVISIBLE &&
+                iv_32.getVisibility() == View.INVISIBLE &&
+                iv_33.getVisibility() == View.INVISIBLE &&
+                iv_34.getVisibility() == View.INVISIBLE){
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+            alertDialogBuilder
+                    .setMessage("GAME OVER!\nP1: " + playerPoints + "\nP2: " + cpuPoints)
+                    .setCancelable(false)
+                    .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i){
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
     }
 
     private void frontOfCardsResources(){
